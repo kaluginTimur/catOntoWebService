@@ -19,10 +19,14 @@ package com.tika.catontowebservice.semantic.util;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import org.semanticweb.HermiT.ReasonerFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+import org.semanticweb.owlapi.reasoner.OWLReasoner;
+import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 
 /**
  *
@@ -30,17 +34,21 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
  */
 public class OntologyUtil {
     
+    private static final String ONTOLOGY_PROJECT_RESOURCE_PATH = "src/main/resources/semantic/ontology/";
     private static final String ONTOLOGY_RESOURCE_PATH = "semantic/ontology/";
     private static final String ONTOLOGY_FILE_NAME = "catonto.owl";
-    private static final String ONTOLOGY_PATH = ONTOLOGY_RESOURCE_PATH + ONTOLOGY_FILE_NAME;
+    private static final File ONTOLOGY_FILE;
     
     private static final OWLOntology ontology;
+    private static final OWLReasoner reasoner;
     
     static {
         OWLOntologyManager man = OWLManager.createOWLOntologyManager();
         try {
-            File ontologyFile = getOntologyFile();
-            ontology = man.loadOntologyFromOntologyDocument(ontologyFile);
+            ONTOLOGY_FILE = getOntologyFile();
+            ontology = man.loadOntologyFromOntologyDocument(ONTOLOGY_FILE);
+            OWLReasonerFactory rf = new ReasonerFactory();
+            reasoner = rf.createReasoner(ontology); 
         } catch (OWLOntologyCreationException | FileNotFoundException ex) {
             System.err.println("Initial OWL ontology load failed. " + ex);  
             throw new ExceptionInInitializerError(ex);
@@ -51,12 +59,25 @@ public class OntologyUtil {
         return ontology;
     }
     
+    public static OWLReasoner getReasoner() {
+        return reasoner;
+    }
+    
+    public static void saveOntology() throws OWLOntologyStorageException {
+        ontology.getOWLOntologyManager().saveOntology(ontology);
+    }
+    
     private static File getOntologyFile() throws FileNotFoundException {
         ClassLoader classLoader = OntologyUtil.class.getClassLoader();
-        URL fileUrl = classLoader.getResource(ONTOLOGY_PATH);
-        if(fileUrl == null) throw new FileNotFoundException("Ontology file not found.");
-        File file = new File(fileUrl.getFile());
-        return file;
+        File file = new File(ONTOLOGY_PROJECT_RESOURCE_PATH + ONTOLOGY_FILE_NAME);
+        URL fileUrl = classLoader.getResource(ONTOLOGY_RESOURCE_PATH + ONTOLOGY_FILE_NAME);
+        if (!file.exists() && fileUrl == null) {
+            throw new FileNotFoundException("Ontology file not found.");
+        } else if (file.exists()) {
+            return file;
+        } else {
+            return new File(fileUrl.getPath());
+        }
     }
     
 }

@@ -16,6 +16,9 @@
  */
 package com.tika.catontowebservice.semantic.vocabulary;
 
+import com.tika.catontowebservice.semantic.util.OntologyUtil;
+import java.util.ArrayList;
+import java.util.List;
 import org.semanticweb.owlapi.model.IRI;
 
 /**
@@ -63,8 +66,97 @@ public class Catonto {
         TEMPER = getIRI("Temper");
     }
     
+    public static class Individual {
+        
+        //Body
+        public static final IRI BODY_AVERAGE;
+        public static final IRI BODY_FAT;
+        public static final IRI BODY_MUSCULAR;
+        public static final IRI BODY_SLIM;
+        
+        //Head size
+        public static final IRI HEAD_SIZE_AVERAGE;
+        public static final IRI HEAD_SIZE_BIG;
+        public static final IRI HEAD_SIZE_SMALL;
+        
+        //Limb size
+        public static final IRI LIMB_SIZE_AVERAGE;
+        public static final IRI LIMB_SIZE_LONG;
+        public static final IRI LIMB_SIZE_SHORT;
+        
+        //Torso size
+        public static final IRI TORSO_SIZE_AVERAGE;
+        public static final IRI TORSO_SIZE_BIG;
+        public static final IRI TORSO_SIZE_SMALL;
+        
+        //Color variants
+        public static final IRI COLOR_FEW;
+        public static final IRI COLOR_MONOTON;
+        public static final IRI COLOR_VARIOUS;
+        
+        //Color length
+        public static final IRI COAT_LENGTH_HAIRLESS;
+        public static final IRI COAT_LENGTH_LONG;
+        public static final IRI COAT_LENGTH_MEDIUM;
+        public static final IRI COAT_LENGTH_SHORT;
+        
+        static {
+            BODY_AVERAGE = getIRI("BodyAverage");
+            BODY_FAT = getIRI("BodyFat");
+            BODY_MUSCULAR = getIRI("BodyMuscular");
+            BODY_SLIM = getIRI("BodySlim");
+            
+            HEAD_SIZE_AVERAGE = getIRI("HeadSizeAverage");
+            HEAD_SIZE_BIG = getIRI("HeadSizeBig");
+            HEAD_SIZE_SMALL = getIRI("HeadSizeSmall");
+            
+            LIMB_SIZE_AVERAGE = getIRI("LimbSizeAverage");
+            LIMB_SIZE_LONG = getIRI("LimbSizeLong");
+            LIMB_SIZE_SHORT = getIRI("LimbSizeShort");
+            
+            TORSO_SIZE_AVERAGE = getIRI("TorsoSizeAverage");
+            TORSO_SIZE_BIG = getIRI("TorsoSizeBig");
+            TORSO_SIZE_SMALL = getIRI("TorsoSizeSmall");
+            
+            COLOR_FEW = getIRI("ColorFew");
+            COLOR_MONOTON = getIRI("ColorMonoton");
+            COLOR_VARIOUS = getIRI("ColorVarious");
+            
+            COAT_LENGTH_HAIRLESS = getIRI("CoatLengthHairless");
+            COAT_LENGTH_LONG = getIRI("CoatLengthLong");
+            COAT_LENGTH_MEDIUM = getIRI("CoatLengthMedium");
+            COAT_LENGTH_SHORT = getIRI("CoatLengthShort");
+        }
+    }
+    
     private static IRI getIRI(String name) {
         return IRI.create(NAMESPACE + name);
     }
     
+    public static void main(String[] args) {
+        List<IRI> list = new ArrayList<>();
+        list.add(Individual.BODY_AVERAGE);
+        list.add(Individual.BODY_FAT);
+        list.add(Individual.BODY_MUSCULAR);
+        list.add(Individual.BODY_SLIM);
+        list.add(Individual.COLOR_FEW);
+        list.add(Individual.COAT_LENGTH_HAIRLESS);
+        list.add(Individual.COAT_LENGTH_LONG);
+        list.add(Individual.COAT_LENGTH_MEDIUM);
+        list.add(Individual.COAT_LENGTH_SHORT);
+        list.add(Individual.COLOR_MONOTON);
+        list.add(Individual.COLOR_VARIOUS);
+        list.add(Individual.HEAD_SIZE_AVERAGE);
+        list.add(Individual.HEAD_SIZE_BIG);
+        list.add(Individual.HEAD_SIZE_SMALL);
+        list.add(Individual.LIMB_SIZE_AVERAGE);
+        list.add(Individual.LIMB_SIZE_LONG);
+        list.add(Individual.LIMB_SIZE_SHORT);
+        list.add(Individual.TORSO_SIZE_AVERAGE);
+        list.add(Individual.TORSO_SIZE_BIG);
+        list.add(Individual.TORSO_SIZE_SMALL);
+        for (IRI iri : list) {
+            if (!OntologyUtil.getOntology().containsIndividualInSignature(iri)) System.out.println(iri);
+        }
+    }
 }
