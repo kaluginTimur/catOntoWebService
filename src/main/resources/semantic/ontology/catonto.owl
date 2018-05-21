@@ -19,12 +19,10 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsAnimals -->
-
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsAnimals">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
@@ -35,32 +33,29 @@
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsHuman -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsKids -->
 
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsHuman">
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsKids">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsHuman"/>
-        <rdfs:label xml:lang="ru">Отношение к посторонним людям</rdfs:label>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids"/>
+        <rdfs:label xml:lang="ru">Отношение к детям</rdfs:label>
     </owl:ObjectProperty>
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBody -->
 
-
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBody">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBodyDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
-        <rdfs:label xml:lang="ru">Тело</rdfs:label>
+        <rdfs:label xml:lang="ru">Параметры тела</rdfs:label>
     </owl:ObjectProperty>
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBodyDescriptor -->
-
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBodyDescriptor">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBreedDescriptor"/>
@@ -70,26 +65,74 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBreedDescriptor -->
 
-
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBreedDescriptor"/>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasHeadSize -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoat -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoat">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBodyDescriptor"/>
+    </owl:ObjectProperty>
+    
 
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasHeadSize">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBody"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoatColor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoatColor">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoat"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSize"/>
-        <rdfs:label xml:lang="ru">Размер головы</rdfs:label>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Color"/>
+        <rdfs:label xml:lang="ru">Разнообразие окраса</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoatLength -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoatLength">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoat"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Length"/>
+        <rdfs:label xml:lang="ru">Длина шерсти</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasFamilyAffection -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasFamilyAffection">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#FamilyAffection"/>
+        <rdfs:label xml:lang="ru">Привязанность к членам семьи</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasGeneralHealth -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasGeneralHealth">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBodyDescriptor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
+        <rdfs:label xml:lang="ru">Здоровье в целом</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasGroomingDifficulty -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasGroomingDifficulty">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoat"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingDifficulty"/>
+        <rdfs:label xml:lang="ru">Сложность ухода</rdfs:label>
     </owl:ObjectProperty>
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasIntelligence -->
-
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasIntelligence">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
@@ -100,21 +143,7 @@
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasLimbSize -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasLimbSize">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBody"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSize"/>
-        <rdfs:label xml:lang="ru">Длина конечностей</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasNotTemperTrait -->
-
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasNotTemperTrait">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
@@ -128,18 +157,16 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasOrigin -->
 
-
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasOrigin">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Region"/>
-        <rdfs:label xml:lang="ru">Регион</rdfs:label>
+        <rdfs:label xml:lang="ru">Регион происхождения</rdfs:label>
     </owl:ObjectProperty>
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription -->
-
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBreedDescriptor"/>
@@ -147,27 +174,35 @@
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTemperTrait -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPlayfulness -->
 
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPlayfulness">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Playfulness"/>
+        <rdfs:label xml:lang="ru">Игривость</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasShedding -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasShedding">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoat"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Shedding"/>
+        <rdfs:label xml:lang="ru">Количество шерсти во время линьки</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTemperTrait -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTemperTrait">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper"/>
         <rdfs:label xml:lang="ru">Не присущи черты</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTorsoSize -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTorsoSize">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBody"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSize"/>
-        <rdfs:label xml:lang="ru">Размер торса</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -180,18 +215,27 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAverageLifeSpan -->
 
-
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAverageLifeSpan">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment xml:lang="ru">Средняя продолжительность жизни</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="ru">Средняя продолжительность жизни, лет</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAverageWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAverageWeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="ru">Средний вес особи, кг</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -204,12 +248,10 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsAnimals -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsAnimals">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
@@ -217,17 +259,15 @@
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsHuman -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids -->
 
-
-    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsHuman">
+    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
     </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BreedDescriptor"/>
@@ -237,8 +277,13 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBody"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasNotTemperTrait"/>
@@ -253,9 +298,58 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasHeadSize"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsAnimals"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSize"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsAnimals"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsKids"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoatColor"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Color"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasCoatLength"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Length"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasFamilyAffection"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#FamilyAffection"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasGeneralHealth"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasGroomingDifficulty"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingDifficulty"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasIntelligence"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Intelligence"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -267,22 +361,30 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTorsoSize"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPlayfulness"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSize"/>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Playfulness"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasLimbSize"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSize"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasShedding"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Shedding"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAverageLifeSpan"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAverageWeight"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -290,7 +392,6 @@
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BreedDescriptor -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BreedDescriptor">
         <owl:equivalentClass>
@@ -308,22 +409,13 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Coat -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Coat">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BreedDescriptor"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthShort -->
-
-
-    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthShort"/>
-    
-
-
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Color -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Color">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Coat"/>
@@ -331,26 +423,31 @@
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSize -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#FamilyAffection -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#FamilyAffection">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
+    </owl:Class>
+    
 
 
-    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSize">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSizeAverage"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSizeBig"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSizeSmall"/>
-                </owl:oneOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BreedDescriptor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingDifficulty -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingDifficulty">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Coat"/>
     </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Intelligence -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Intelligence">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
@@ -360,43 +457,13 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Length -->
 
-
     <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Length">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthHairless"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthLong"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthMedium"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthShort"/>
-                </owl:oneOf>
-            </owl:Class>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Coat"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSize -->
-
-
-    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSize">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSizeAverage"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSizeLong"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSizeShort"/>
-                </owl:oneOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality -->
-
 
     <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BreedDescriptor"/>
@@ -404,57 +471,32 @@
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Region -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Playfulness -->
 
-
-    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Region"/>
-    
-
-
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper -->
-
-
-    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper">
+    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Playfulness">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TestBreed -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Region -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Region"/>
+    
 
 
-    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TestBreed">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasNotTemperTrait"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperSoft"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTemperTrait"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperAggressive"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Shedding -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Shedding">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Coat"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSize -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper -->
 
-
-    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSize">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeAverage"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeBig"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeSmall"/>
-                </owl:oneOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
     </owl:Class>
     
 
@@ -467,16 +509,83 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
 
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Abyssinian -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Abyssinian">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <hasAttitudeTowardsAnimals rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasAttitudeTowardsKids rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasBody rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySizeAverage"/>
+        <hasBody rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySlim"/>
+        <hasCoatColor rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#ColorMonoton"/>
+        <hasCoatLength rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthShort"/>
+        <hasFamilyAffection rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionAverage"/>
+        <hasGeneralHealth rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthBad"/>
+        <hasGroomingDifficulty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingAverage"/>
+        <hasIntelligence rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceVeryHigh"/>
+        <hasOrigin rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionEthiopia"/>
+        <hasPlayfulness rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessVeryHigh"/>
+        <hasShedding rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingAverage"/>
+        <hasAverageLifeSpan rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</hasAverageLifeSpan>
+        <hasAverageWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</hasAverageWeight>
+        <rdfs:label xml:lang="ru">Абессинская</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionAverage -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionAverage">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#FamilyAffection"/>
+        <rdfs:label xml:lang="ru">Средняя</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionHigh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionHigh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#FamilyAffection"/>
+        <rdfs:label xml:lang="ru">Высокая</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionLow -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionLow">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#FamilyAffection"/>
+        <rdfs:label xml:lang="ru">Низкая</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionVeryHigh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionVeryHigh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#FamilyAffection"/>
+        <rdfs:label xml:lang="ru">Очень высокая</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionVeryLow -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionVeryLow">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#FamilyAffection"/>
+        <rdfs:label xml:lang="ru">Очень низкая</rdfs:label>
+    </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsAnimals"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsHuman"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids"/>
         <rdfs:label xml:lang="ru">Дружелюбное</rdfs:label>
     </owl:NamedIndividual>
     
@@ -484,10 +593,9 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeIndifferent -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeIndifferent">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsAnimals"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsHuman"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids"/>
         <rdfs:label xml:lang="ru">Нейтральное</rdfs:label>
     </owl:NamedIndividual>
     
@@ -495,17 +603,15 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeUnfriendly -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeUnfriendly">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsAnimals"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsHuman"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids"/>
         <rdfs:label xml:lang="ru">Недружелюбное</rdfs:label>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodyAverage -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodyAverage">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
@@ -516,7 +622,6 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodyFat -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodyFat">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
         <rdfs:label xml:lang="ru">Толстое</rdfs:label>
@@ -526,7 +631,6 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodyMuscular -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodyMuscular">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
         <rdfs:label xml:lang="ru">Мускулистое</rdfs:label>
@@ -534,8 +638,34 @@
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySlim -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySizeAverage -->
 
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySizeAverage">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
+        <rdfs:label xml:lang="ru">Среднего размера</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySizeBig -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySizeBig">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
+        <rdfs:label xml:lang="ru">Большое</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySizeSmall -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySizeSmall">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
+        <rdfs:label xml:lang="ru">Маленькое</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySlim -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySlim">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
@@ -546,7 +676,6 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthHairless -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthHairless">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Length"/>
         <rdfs:label xml:lang="ru">Безволосая порода</rdfs:label>
@@ -555,7 +684,6 @@
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthLong -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthLong">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Length"/>
@@ -566,7 +694,6 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthMedium -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthMedium">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Length"/>
         <rdfs:label xml:lang="ru">Шерсть средней длины</rdfs:label>
@@ -576,15 +703,14 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthShort -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthShort">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Length"/>
+        <rdfs:label xml:lang="ru">Короткошёрстная порода</rdfs:label>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#ColorFew -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#ColorFew">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Color"/>
@@ -595,7 +721,6 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#ColorMonoton -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#ColorMonoton">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Color"/>
         <rdfs:label xml:lang="ru">Монотонный окрас</rdfs:label>
@@ -605,7 +730,6 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#ColorVarious -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#ColorVarious">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Color"/>
         <rdfs:label xml:lang="ru">Богатое</rdfs:label>
@@ -613,108 +737,187 @@
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSizeAverage -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingAverage -->
 
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSizeAverage">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSize"/>
-        <rdfs:label xml:lang="ru">Средний</rdfs:label>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingAverage">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingDifficulty"/>
+        <rdfs:label xml:lang="ru">Обычный уход</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSizeBig -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingEasy -->
 
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSizeBig">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSize"/>
-        <rdfs:label xml:lang="ru">Большой</rdfs:label>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingEasy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingDifficulty"/>
+        <rdfs:label xml:lang="ru">Простой уход</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSizeSmall -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingHard -->
 
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSizeSmall">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HeadSize"/>
-        <rdfs:label xml:lang="ru">Маленький</rdfs:label>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingHard">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingDifficulty"/>
+        <rdfs:label xml:lang="ru">Сложно ухаживать</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceClever -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingVeryEasy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingVeryEasy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingDifficulty"/>
+        <rdfs:label xml:lang="ru">Ухаживать очень легко</rdfs:label>
+    </owl:NamedIndividual>
+    
 
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceClever">
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingVeryHard -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingVeryHard">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingDifficulty"/>
+        <rdfs:label xml:lang="ru">Ухаживать очень сложно</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthAverage -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthAverage">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
+        <rdfs:label xml:lang="ru">Среднее здоровье</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthBad -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthBad">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
+        <rdfs:label xml:lang="ru">Плохое здоровье</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthGood -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthGood">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
+        <rdfs:label xml:lang="ru">Хорошое здоровье</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthVeryBad -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthVeryBad">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
+        <rdfs:label xml:lang="ru">Очень плохое здоровье</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthVeryGood -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthVeryGood">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
+        <rdfs:label xml:lang="ru">Очень хорошее здоровье</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceAverage -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceAverage">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Intelligence"/>
-        <rdfs:label xml:lang="ru">Умные</rdfs:label>
+        <rdfs:label xml:lang="ru">Среднего ума</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceCurious -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceHigh -->
 
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceCurious">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceHigh">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Intelligence"/>
-        <rdfs:label xml:lang="ru">Любопытные</rdfs:label>
+        <rdfs:label xml:lang="ru">Значительный интеллект</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceEasyToLearn -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceLow -->
 
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceEasyToLearn">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceLow">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Intelligence"/>
-        <rdfs:label xml:lang="ru">Обучаемые</rdfs:label>
+        <rdfs:label xml:lang="ru">Низкий интеллект</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceHardToLearn -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceVeryHigh -->
 
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceHardToLearn">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceVeryHigh">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Intelligence"/>
-        <rdfs:label xml:lang="ru">Сложнообучаемые</rdfs:label>
+        <rdfs:label xml:lang="ru">Очень умны</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSizeAverage -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessAverage -->
 
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSizeAverage">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSize"/>
-        <rdfs:label xml:lang="ru">Средние конечности</rdfs:label>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessAverage">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Playfulness"/>
+        <rdfs:label xml:lang="ru">Средняя игривость</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSizeLong -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessHigh -->
 
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSizeLong">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSize"/>
-        <rdfs:label xml:lang="ru">Длинные конечности</rdfs:label>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessHigh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Playfulness"/>
+        <rdfs:label xml:lang="ru">Высокая игривость</rdfs:label>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSizeShort -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessLow -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessLow">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Playfulness"/>
+        <rdfs:label xml:lang="ru">Низкая игривость</rdfs:label>
+    </owl:NamedIndividual>
+    
 
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSizeShort">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#LimbSize"/>
-        <rdfs:label xml:lang="ru">Короткие конечности</rdfs:label>
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessVeryHigh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessVeryHigh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Playfulness"/>
+        <rdfs:label xml:lang="ru">Очень высокая игривость</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessVeryLow -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessVeryLow">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Playfulness"/>
+        <rdfs:label xml:lang="ru">Очень низкая игривость</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionEthiopia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionEthiopia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Region"/>
+        <rdfs:label xml:lang="ru">Эфиопия</rdfs:label>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionJapan -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionJapan">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Region"/>
@@ -725,7 +928,6 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionRussia -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionRussia">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Region"/>
         <rdfs:label xml:lang="ru">Россия</rdfs:label>
@@ -733,8 +935,52 @@
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperAggressive -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingAverage -->
 
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingAverage">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Shedding"/>
+        <rdfs:label xml:lang="ru">Среднее количество шерсти</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingHigh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingHigh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Shedding"/>
+        <rdfs:label xml:lang="ru">Много шерсти</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingLow -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingLow">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Shedding"/>
+        <rdfs:label xml:lang="ru">Немного шерсти</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingVeryHigh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingVeryHigh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Shedding"/>
+        <rdfs:label xml:lang="ru">Очень много шерсти</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingVeryLow -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingVeryLow">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Shedding"/>
+        <rdfs:label xml:lang="ru">Очень мало шерсти</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperAggressive -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperAggressive">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper"/>
@@ -745,7 +991,6 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperCalm -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperCalm">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper"/>
         <rdfs:label xml:lang="ru">Спокойствие</rdfs:label>
@@ -754,7 +999,6 @@
 
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperObedient -->
-
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperObedient">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper"/>
@@ -765,81 +1009,10 @@
 
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperSoft -->
 
-
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperSoft">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper"/>
         <rdfs:label xml:lang="ru">Мягкий характер</rdfs:label>
     </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TestBreedInst -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TestBreedInst">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TestBreed"/>
-        <hasAttitudeTowardsHuman rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
-        <hasTorsoSize rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeAverage"/>
-        <hasTorsoSize rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeBig"/>
-        <hasAverageLifeSpan rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">123</hasAverageLifeSpan>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TestBreedOdin -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TestBreedOdin">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
-        <hasTorsoSize rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeAverage"/>
-        <hasTorsoSize rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeBig"/>
-        <hasAverageLifeSpan rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</hasAverageLifeSpan>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeAverage -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeAverage">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSize"/>
-        <rdfs:label xml:lang="ru">Средний</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeBig -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeBig">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSize"/>
-        <rdfs:label xml:lang="ru">Большой</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeSmall -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSizeSmall">
-        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TorsoSize"/>
-        <rdfs:label xml:lang="ru">Маленький</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthShort">
-        <rdfs:label xml:lang="ru">Короткая шерсть</rdfs:label>
-    </rdf:Description>
     
 
 
@@ -850,7 +1023,6 @@
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
-
 
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
@@ -864,6 +1036,5 @@
 
 
 
-<!-- Generated by the OWL API (version 5.0.0.20160228-2008) https://github.com/owlcs/owlapi/ -->
-
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
 
