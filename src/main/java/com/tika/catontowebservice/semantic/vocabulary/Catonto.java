@@ -66,6 +66,32 @@ public class Catonto {
         TEMPER = getIRI("Temper");
     }
     
+    public static class ObjectProperty {
+        
+        public static final IRI HAS_BREED_DESCRIPTOR;
+        public static final IRI HAS_BODY_DESCRIPTOR;
+        public static final IRI HAS_PERSONALITY_DESCRIPTOR;
+        
+        static {
+            HAS_BREED_DESCRIPTOR = getIRI("hasBreedDescriptor");
+            HAS_BODY_DESCRIPTOR = getIRI("hasBodyDescriptor");
+            HAS_PERSONALITY_DESCRIPTOR = getIRI("hasPersonalityDescriptor");
+        }
+        
+    }
+    
+    public static class DataProperty {
+        
+        public static final IRI HAS_BREED_DESCRIPTOR;
+        public static final IRI HAS_BODY_DESCRIPTOR;
+        
+        static {
+            HAS_BREED_DESCRIPTOR = getIRI("hasBreedDataDescriptor");
+            HAS_BODY_DESCRIPTOR = getIRI("hasBodyDataDescriptor");
+        }
+        
+    }
+    
     public static class Individual {
         
         //Body

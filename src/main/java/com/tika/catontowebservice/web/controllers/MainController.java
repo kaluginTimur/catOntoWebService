@@ -47,25 +47,35 @@ public class MainController {
     @Autowired
     private HttpServletRequest request;
     
-    @RequestMapping(value = "/{breedName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/breed/{breedName}", method = RequestMethod.GET)
     private ModelAndView getBreedParams(@PathVariable("breedName") String breedName) {
-        return new ModelAndView("breedInfo", "breedProp", OntologyWebService.getBreedCharacteristics(breedName))
-                .addObject("breedName", breedName);
+        return new ModelAndView("breedInfo", "breedBodyProp", OntologyWebService.getBodyBreedCharacteristics(breedName))
+                .addObject("breedPersonalityProp", OntologyWebService.getPersonalityBreedCharacteristics(breedName))
+                .addObject("breedName", OntologyWebService.getBreedName(breedName));
+    }
+    
+    @RequestMapping(value = "/breeds", method = RequestMethod.GET)
+    private ModelAndView getBreeds() {
+        return new ModelAndView("breeds", "breedList", OntologyWebService.getBreeds());
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    private ModelAndView getBreedList() {
-        return new ModelAndView("index", "breedList", OntologyWebService.getBreeds());
+    private ModelAndView getProperties() {
+        return new ModelAndView("index", "breedBodyProperties", OntologyWebService.getBodyBreedCharacteristics())
+                .addObject("breedPersonProperties", OntologyWebService.getPersonalityBreedCharacteristics());
     }
     
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    private String createBreed() throws OWLOntologyStorageException {
+    @RequestMapping(value = "/findBreed", method = RequestMethod.POST)
+    private ModelAndView findBreeds() {
         for(Map.Entry<String, String[]> entry : request.getParameterMap().entrySet()) {
-            System.out.println(entry.getKey() + ": ");
-            for(String value : entry.getValue()) {
-                System.out.println("\t" + value);
+            System.out.print(entry.getKey() + ": " );
+            for(String str : entry.getValue()) {
+                System.out.println(str);
             }
         }
-        return "redirect:/";
+        System.out.println("FROM CONTROLLER");
+        return new ModelAndView("index", "breedsFinded", OntologyWebService.findBreeds(request.getParameterMap()))
+                .addObject("breedPersonProperties", OntologyWebService.getPersonalityBreedCharacteristics())
+                .addObject("breedBodyProperties", OntologyWebService.getBodyBreedCharacteristics());
     }
 }

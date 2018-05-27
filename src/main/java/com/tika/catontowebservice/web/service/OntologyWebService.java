@@ -17,13 +17,18 @@
 package com.tika.catontowebservice.web.service;
 
 import com.tika.catontowebservice.semantic.service.OntologyProcessor;
+import com.tika.catontowebservice.semantic.vocabulary.Catonto;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLPropertyExpression;
 import org.springframework.util.CollectionUtils;
 
@@ -33,23 +38,76 @@ import org.springframework.util.CollectionUtils;
  */
 public class OntologyWebService {
     
+    public static Map<Map<String, String>, String[]> findBreeds(Map<String, String[]> propertyMap) {
+        return OntologyProcessor.findBreeds(propertyMap);
+    }
+    
+    public static String getBreedName(String breedName) {
+        return OntologyProcessor.getRuLabel(OntologyProcessor.getOntoIndividual(breedName));
+    }
+    
     public static Map<String, String> getBreeds() {
+        OWLClass breed = OntologyProcessor.getOntoClass(Catonto.BREED);
         Map<String, String> mapStr = new HashMap<>();
-        OntologyProcessor.getAllBreeds().forEach((individual) -> {
+        OntologyProcessor.getClassInstances(breed).forEach((individual) -> {
             mapStr.put(OntologyProcessor.resolveEntityName(individual.getIRI()),
                     OntologyProcessor.getRuLabel(individual));
         });
         return mapStr;
     }
     
-    public static Map<String, Collection<String>> getBreedCharacteristics(String breedName) {
+    public static Map<String, Collection<String>> getAllBreedCharacteristics(String breedName) {
         OWLNamedIndividual breed = OntologyProcessor.getOntoIndividual(breedName);
         Map<OWLPropertyExpression, Set<OWLNamedIndividual>> map = OntologyProcessor.getPropertyValuesForBreedIndividual(breed);
+        return getStringMap(map, false);
+    }
+    
+    public static Map<Map<String, String>, Map<String, String>> getBodyBreedCharacteristics() {
+        OWLClass breed = OntologyProcessor.getOntoClass(Catonto.BREED);
+        OWLObjectProperty body = OntologyProcessor.getOntoObjectProperty(Catonto.ObjectProperty.HAS_BODY_DESCRIPTOR);
+        OWLDataProperty body_data = OntologyProcessor.getOntoDataProperty(Catonto.DataProperty.HAS_BODY_DESCRIPTOR);     
+        Map<OWLPropertyExpression, Set<OWLNamedIndividual>> map = OntologyProcessor
+                .getObjectPropertyValues(breed, body);
+        OntologyProcessor.getSpecifiedClassDomainDataProperties(breed, body_data)
+                .forEach(property -> map.put(property, Collections.EMPTY_SET));
+        return getStringMultiMap(map);
+    }
+    
+    public static Map<Map<String, String>, Map<String, String>> getPersonalityBreedCharacteristics() {
+        OWLClass breed = OntologyProcessor.getOntoClass(Catonto.BREED);
+        OWLObjectProperty personality = OntologyProcessor.getOntoObjectProperty(Catonto.ObjectProperty.HAS_PERSONALITY_DESCRIPTOR);  
+        Map<OWLPropertyExpression, Set<OWLNamedIndividual>> map = OntologyProcessor
+                .getObjectPropertyValues(breed, personality);
+        return getStringMultiMap(map);
+    }
+    
+    public static Map<String, Collection<String>> getBodyBreedCharacteristics(String breedName) {
+        OWLNamedIndividual breed = OntologyProcessor.getOntoIndividual(breedName);
+        OWLObjectProperty body = OntologyProcessor.getOntoObjectProperty(Catonto.ObjectProperty.HAS_BODY_DESCRIPTOR);
+        OWLDataProperty body_data = OntologyProcessor.getOntoDataProperty(Catonto.DataProperty.HAS_BODY_DESCRIPTOR);
+        Map<OWLPropertyExpression, Set<OWLNamedIndividual>> map = OntologyProcessor
+                .getObjectPropertyValuesForBreedIndividual(breed, body);
+        map.putAll(OntologyProcessor.getDataPropertyValuesForBreedIndividual(breed, body_data));
+        return getStringMap(map, false);
+    }
+    
+    public static Map<String, Collection<String>> getPersonalityBreedCharacteristics(String breedName) {
+        OWLNamedIndividual breed = OntologyProcessor.getOntoIndividual(breedName);
+        OWLObjectProperty personality = OntologyProcessor.getOntoObjectProperty(Catonto.ObjectProperty.HAS_PERSONALITY_DESCRIPTOR);
+        Map<OWLPropertyExpression, Set<OWLNamedIndividual>> map = OntologyProcessor
+                .getObjectPropertyValuesForBreedIndividual(breed, personality);
+        return getStringMap(map, false);
+    }
+    
+    private static Map<String, Collection<String>> 
+        getStringMap(Map<OWLPropertyExpression, Set<OWLNamedIndividual>> map, boolean emptyDataValuesAllowed) {
         Map<String, Collection<String>> mapStr = new HashMap<>();
         map.entrySet().forEach((entry) -> {
             String property;
+            boolean dataProperty = false;
             Collection<String> values;
             if (entry.getKey().isDataPropertyExpression()) {
+                dataProperty = true;
                 property = OntologyProcessor.getRuLabel(entry.getKey().asOWLDataProperty());
                 values = new ArrayList<>();
                 entry.getValue().forEach((literal) -> {
@@ -63,11 +121,38 @@ public class OntologyWebService {
                     values.add(OntologyProcessor.getRuLabel(individual));
                 });
             }
-            if (!CollectionUtils.isEmpty(values)) {
+            if (!CollectionUtils.isEmpty(values) || (dataProperty && emptyDataValuesAllowed)) {
                 mapStr.put(property, values);
             }
         });
         return mapStr;
     }
-    
+        
+    private static Map<Map<String, String>, Map<String, String>> 
+        getStringMultiMap(Map<OWLPropertyExpression, Set<OWLNamedIndividual>> map) {
+        Map<Map<String, String>, Map<String, String>> _map = new HashMap<>();
+        map.entrySet().forEach((entry) -> {
+            String property;
+            Map<String, String> propertyMap = new HashMap<>();
+            Map<String, String> valuesMap;
+            if (entry.getKey().isDataPropertyExpression()) {
+                property = OntologyProcessor.getRuLabel(entry.getKey().asOWLDataProperty());
+                propertyMap.put(entry.getKey().asOWLDataProperty().getIRI().getShortForm(), property);
+                valuesMap = new HashMap<>();
+                entry.getValue().forEach((literal) -> {
+                    valuesMap.put("dataPropValue", OntologyProcessor.resolveEntityName(literal.getIRI()));
+                });
+            }
+            else {
+                property = OntologyProcessor.getRuLabel(entry.getKey().asOWLObjectProperty());
+                propertyMap.put(entry.getKey().asOWLObjectProperty().getIRI().getShortForm(), property);
+                valuesMap = new HashMap<>();
+                entry.getValue().forEach((individual) -> {
+                    valuesMap.put(individual.getIRI().getShortForm(), OntologyProcessor.getRuLabel(individual));
+                });
+            }
+            _map.put(propertyMap, valuesMap);
+        });
+        return _map;
+    }
 }

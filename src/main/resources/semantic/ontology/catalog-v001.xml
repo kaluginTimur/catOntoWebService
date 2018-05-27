@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1526940553105" name="http://www.semanticweb.org/admin/ontologies/2018/2/catonto" uri="catonto.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1527282546937" name="http://www.semanticweb.org/admin/ontologies/2018/2/catonto" uri="catonto.owl"/>
     </group>
 </catalog>

@@ -25,7 +25,7 @@
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsAnimals -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsAnimals">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsAnimals"/>
         <rdfs:label xml:lang="ru">Отношение к другим животным</rdfs:label>
@@ -36,7 +36,7 @@
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsKids -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsKids">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids"/>
         <rdfs:label xml:lang="ru">Отношение к детям</rdfs:label>
@@ -102,7 +102,7 @@
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasFamilyAffection -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasFamilyAffection">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#FamilyAffection"/>
         <rdfs:label xml:lang="ru">Привязанность к членам семьи</rdfs:label>
@@ -135,7 +135,7 @@
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasIntelligence -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasIntelligence">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Intelligence"/>
         <rdfs:label xml:lang="ru">Интеллект</rdfs:label>
@@ -146,7 +146,7 @@
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasNotTemperTrait -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasNotTemperTrait">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper"/>
         <owl:propertyDisjointWith rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTemperTrait"/>
@@ -166,9 +166,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription -->
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription">
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBreedDescriptor"/>
     </owl:ObjectProperty>
     
@@ -177,7 +177,7 @@
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPlayfulness -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPlayfulness">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Playfulness"/>
         <rdfs:label xml:lang="ru">Игривость</rdfs:label>
@@ -199,7 +199,7 @@
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTemperTrait -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTemperTrait">
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescription"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper"/>
         <rdfs:label xml:lang="ru">Не присущи черты</rdfs:label>
@@ -221,7 +221,7 @@
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAverageLifeSpan -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAverageLifeSpan">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBodyDataDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:label xml:lang="ru">Средняя продолжительность жизни, лет</rdfs:label>
@@ -232,11 +232,25 @@
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAverageWeight -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAverageWeight">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBodyDataDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:label xml:lang="ru">Средний вес особи, кг</rdfs:label>
     </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBodyDataDescriptor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBodyDataDescriptor">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBreedDataDescriptor"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBreedDataDescriptor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBreedDataDescriptor"/>
     
 
 
@@ -399,6 +413,7 @@
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
                     <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Coat"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
                     <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
                 </owl:unionOf>
             </owl:Class>
@@ -1029,6 +1044,7 @@
         <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Body"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Coat"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
         </owl:members>
     </rdf:Description>

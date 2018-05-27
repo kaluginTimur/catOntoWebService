@@ -18,62 +18,35 @@ package com.tika.catontowebservice.semantic.service;
 
 import com.tika.catontowebservice.semantic.util.OntologyUtil;
 import com.tika.catontowebservice.semantic.vocabulary.Catonto;
-import java.io.FileNotFoundException;
-import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.openrdf.model.vocabulary.RDFS;
-import org.semanticweb.HermiT.ReasonerFactory;
-import org.semanticweb.owlapi.model.ClassExpressionType;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
-import org.semanticweb.owlapi.model.OWLClassAxiom;
-import org.semanticweb.owlapi.model.OWLClassExpression;
-import org.semanticweb.owlapi.model.OWLClassExpressionVisitor;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDataPropertyExpression;
 import org.semanticweb.owlapi.model.OWLEntity;
-import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLObjectCardinalityRestriction;
-import org.semanticweb.owlapi.model.OWLObjectExactCardinality;
-import org.semanticweb.owlapi.model.OWLObjectHasValue;
-import org.semanticweb.owlapi.model.OWLObjectMaxCardinality;
-import org.semanticweb.owlapi.model.OWLObjectMinCardinality;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
-import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
-import org.semanticweb.owlapi.model.OWLObjectVisitor;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.model.OWLProperty;
 import org.semanticweb.owlapi.model.OWLPropertyExpression;
-import org.semanticweb.owlapi.model.OWLQuantifiedObjectRestriction;
-import org.semanticweb.owlapi.model.OWLStorerNotFoundException;
-import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
-import org.semanticweb.owlapi.reasoner.InferenceType;
-import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.search.EntitySearcher;
-import org.semanticweb.owlapi.util.SimpleRenderer;
 
 /**
  *
@@ -100,18 +73,61 @@ public class OntologyProcessor {
 //        reasoner.getObjectPropertyValues(getOntoIndividual("TestBreedInst"), 
 //                getOntoObjectProperty("hasLimbSize"))
 //                .forEach(System.out::println);
-        for (Map.Entry<OWLPropertyExpression, Set<OWLNamedIndividual>> map : 
-                getPropertyValuesForBreedIndividual(getOntoIndividual("TestBreedInst")).entrySet()) {
-            if(map.getKey().isDataPropertyExpression()) {
-                System.out.println(getRuLabel(map.getKey().asOWLDataProperty()));
-                for (OWLNamedIndividual literal : map.getValue()) System.out.println(resolveEntityName(literal.getIRI()));
+        getObjectPropertyValuesForBreedIndividual(getOntoIndividual("Abyssinian"), getOntoObjectProperty(Catonto.ObjectProperty.HAS_BODY_DESCRIPTOR))
+                .forEach((t, u) -> {
+                    System.out.println(getRuLabel(t.asOWLObjectProperty()) + "\t" + u);
+                });
+        getSpecifiedClassDomainDataProperties(BREED_CLASS, getOntoDataProperty(Catonto.DataProperty.HAS_BODY_DESCRIPTOR)).forEach(System.out::println);
+    }
+    
+    public static Map<Map<String, String>, String[]> findBreeds(Map<String, String[]> propertyMap) {
+        propertyMap.forEach((t, u) -> {
+            System.out.print(t + ": ");
+            for(String str : u) {
+                System.out.println(str);
             }
-            else {
-                System.out.println(getRuLabel(map.getKey().asOWLObjectProperty()));
-                for (OWLNamedIndividual individual : map.getValue()) System.out.println("\t" + getRuLabel(individual));
+        });
+        Map<Map<String, String>, String[]> targetMap = new HashMap<>();
+        getClassInstances(BREED_CLASS).forEach(breed -> {
+            Map<String, String> breedNameMap = new HashMap<>();
+            breedNameMap.put(breed.getIRI().getShortForm(), getRuLabel(breed));
+            ArrayList<String> propertyList = new ArrayList<>();
+            propertyMap.entrySet().forEach(propertyEntry -> {
+                if (ontology.containsDataPropertyInSignature(getIri(propertyEntry.getKey()))) {
+                    OWLDataProperty property = getOntoDataProperty(propertyEntry.getKey());
+                    System.out.println(property);
+                    reasoner.getDataPropertyValues(breed, property).forEach(literal -> {
+                        for (String value : propertyEntry.getValue()) {
+                            System.out.println("\t" + literal.getLiteral() + " = " + value + "?" 
+                                    + StringUtils.equals(literal.getLiteral(), value));
+                            if (StringUtils.equals(literal.getLiteral(), value)) {
+                                propertyList.add(getRuLabel(property));
+                                break;
+                            }
+                        }
+                    });
+                } else {
+                    if (ontology.containsObjectPropertyInSignature(getIri(propertyEntry.getKey()))) {
+                        OWLObjectProperty property = getOntoObjectProperty(propertyEntry.getKey());
+                        System.out.println(property);
+                        reasoner.getObjectPropertyValues(breed, property).entities().forEach(breedPropValue -> {
+                            for (String value : propertyEntry.getValue()) {
+                                System.out.println("\t" + breedPropValue.getIRI().toString() + " = " + value + "?" 
+                                        + StringUtils.equals(value, breedPropValue.getIRI().toString()));
+                                if (StringUtils.equals(value, breedPropValue.getIRI().getShortForm())) {
+                                    propertyList.add(getRuLabel(property));
+                                    break;
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+            if (!propertyList.isEmpty()) {
+                targetMap.put(breedNameMap, propertyList.toArray(new String[propertyList.size()]));
             }
-        };
-        getAllBreeds().forEach(ind -> System.out.println(resolveEntityName(ind.getIRI()) + "\t" + getRuLabel(ind)));
+        });
+        return targetMap;
     }
     
     public static void setPropertyValuesForIndividual(Map<String, String[]> valuesMap, String individual) {
@@ -181,11 +197,11 @@ public class OntologyProcessor {
                 }
             }
     }
-    
+        
     public static Map<OWLPropertyExpression, Set<OWLNamedIndividual>>
-            getPropertyValuesForBreedIndividual(OWLNamedIndividual individual) {
+            getObjectPropertyValuesForBreedIndividual(OWLNamedIndividual individual, OWLObjectProperty superProperty) {
         Map<OWLPropertyExpression, Set<OWLNamedIndividual>> propertyValuesMap = new HashMap<>();
-        getSpecifiedClassDomainObjectProperties(BREED_CLASS)
+        getSpecifiedClassDomainObjectProperties(BREED_CLASS, superProperty)
                 .forEach(property -> propertyValuesMap.put(property, 
                         reasoner.getObjectPropertyValues(individual, property)
                                 .entities().filter(ind -> 
@@ -193,7 +209,13 @@ public class OntologyProcessor {
                                             .anyMatch(range -> EntitySearcher.getTypes(ind, ontology)
                                                     .anyMatch(type -> range.asOWLClass().getIRI().equals(type.asOWLClass().getIRI())))
                                 ).collect(Collectors.toSet())));
-        getSpecifiedClassDomainDataProperties(BREED_CLASS).forEach(property -> {
+        return propertyValuesMap;
+    }
+            
+    public static Map<OWLPropertyExpression, Set<OWLNamedIndividual>>
+            getDataPropertyValuesForBreedIndividual(OWLNamedIndividual individual, OWLDataProperty superProperty) {
+        Map<OWLPropertyExpression, Set<OWLNamedIndividual>> propertyValuesMap = new HashMap<>();
+        getSpecifiedClassDomainDataProperties(BREED_CLASS, superProperty).forEach(property -> {
             Set<OWLNamedIndividual> litsAsInds = new HashSet<>();
             reasoner.getDataPropertyValues(individual, property.asOWLDataProperty())
                     .forEach(value -> litsAsInds.add(getOntoIndividual(value.getLiteral())));
@@ -201,23 +223,51 @@ public class OntologyProcessor {
         });
         return propertyValuesMap;
     }
+    
+    public static Map<OWLPropertyExpression, Set<OWLNamedIndividual>>
+            getPropertyValuesForBreedIndividual(OWLNamedIndividual individual) {
+        Map<OWLPropertyExpression, Set<OWLNamedIndividual>> propertyValuesMap = new HashMap<>();
+        propertyValuesMap.putAll(getObjectPropertyValuesForBreedIndividual(individual, null));
+        propertyValuesMap.putAll(getDataPropertyValuesForBreedIndividual(individual, null));
+        return propertyValuesMap;
+    }
+            
+    public static Map<OWLPropertyExpression, Set<OWLNamedIndividual>> 
+        getObjectPropertyValues(OWLClass ontoClass, OWLObjectProperty superProperty) {
+        Map<OWLPropertyExpression, Set<OWLNamedIndividual>> propertyValuesMap = new HashMap<>();
+        ontology.objectPropertiesInSignature()
+                .filter(property -> reasoner.getObjectPropertyDomains(property).entities()
+                        .filter(domain -> ontoClass.equals(domain)).findFirst().isPresent() 
+                        && (superProperty != null ? reasoner.getSuperObjectProperties(property).containsEntity(superProperty) : true))
+                .forEach(property -> {
+                    Set<OWLNamedIndividual> individuals = new HashSet<>();
+                    EntitySearcher.getRanges(property, ontology)
+                            .forEach(range -> {
+                                individuals.addAll(reasoner.getInstances(range, true).entities().collect(Collectors.toSet()));
+                            });
+                    propertyValuesMap.put(property, individuals);
+                });
+        return propertyValuesMap;
+    }
         
-    private static ArrayList<OWLObjectPropertyExpression>
-            getSpecifiedClassDomainObjectProperties(OWLClass ontoClass) {
+    public static ArrayList<OWLObjectPropertyExpression>
+            getSpecifiedClassDomainObjectProperties(OWLClass ontoClass, OWLObjectProperty superProperty) {
         ArrayList<OWLObjectPropertyExpression> properties = new ArrayList<>();
         ontology.objectPropertiesInSignature()
                 .filter(property -> reasoner.getObjectPropertyDomains(property).entities()
-                        .filter(domain -> ontoClass.equals(domain)).findFirst().isPresent())
+                        .filter(domain -> ontoClass.equals(domain)).findFirst().isPresent() 
+                        && (superProperty != null ? reasoner.getSuperObjectProperties(property).containsEntity(superProperty) : true))
                 .forEach(property -> properties.add(property));
         return properties;
     }
             
-    private static ArrayList<OWLDataPropertyExpression>
-            getSpecifiedClassDomainDataProperties(OWLClass ontoClass) {
+    public static ArrayList<OWLDataPropertyExpression>
+            getSpecifiedClassDomainDataProperties(OWLClass ontoClass, OWLDataProperty superProperty) {
         ArrayList<OWLDataPropertyExpression> properties = new ArrayList<>();
         ontology.dataPropertiesInSignature()
                 .filter(property -> reasoner.getDataPropertyDomains(property).entities()
-                        .filter(domain -> ontoClass.equals(domain)).findFirst().isPresent())
+                        .filter(domain -> ontoClass.equals(domain)).findFirst().isPresent()
+                        && (superProperty != null ? reasoner.getSuperDataProperties(property).containsEntity(superProperty) : true))
                 .forEach(property -> properties.add(property));
         return properties;
     }
@@ -258,8 +308,8 @@ public class OntologyProcessor {
         return returnString;
     }
     
-    public static Stream<OWLNamedIndividual> getAllBreeds() {
-        return reasoner.getInstances(BREED_CLASS).entities();
+    public static Stream<OWLNamedIndividual> getClassInstances(OWLClass ontoClass) {
+        return reasoner.getInstances(ontoClass).entities();
     }
     
     public static IRI getIri(String entityName) {
