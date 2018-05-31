@@ -16,9 +16,6 @@
  */
 package com.tika.catontowebservice.semantic.vocabulary;
 
-import com.tika.catontowebservice.semantic.util.OntologyUtil;
-import java.util.ArrayList;
-import java.util.List;
 import org.semanticweb.owlapi.model.IRI;
 
 /**
@@ -71,11 +68,13 @@ public class Catonto {
         public static final IRI HAS_BREED_DESCRIPTOR;
         public static final IRI HAS_BODY_DESCRIPTOR;
         public static final IRI HAS_PERSONALITY_DESCRIPTOR;
+        public static final IRI HAS_ORIGIN;
         
         static {
             HAS_BREED_DESCRIPTOR = getIRI("hasBreedDescriptor");
             HAS_BODY_DESCRIPTOR = getIRI("hasBodyDescriptor");
             HAS_PERSONALITY_DESCRIPTOR = getIRI("hasPersonalityDescriptor");
+            HAS_ORIGIN = getIRI("hasOrigin");
         }
         
     }
@@ -84,10 +83,12 @@ public class Catonto {
         
         public static final IRI HAS_BREED_DESCRIPTOR;
         public static final IRI HAS_BODY_DESCRIPTOR;
+        public static final IRI HAS_IMAGE_PATH;
         
         static {
             HAS_BREED_DESCRIPTOR = getIRI("hasBreedDataDescriptor");
             HAS_BODY_DESCRIPTOR = getIRI("hasBodyDataDescriptor");
+            HAS_IMAGE_PATH = getIRI("hasImagePath");
         }
         
     }
@@ -157,32 +158,5 @@ public class Catonto {
     
     private static IRI getIRI(String name) {
         return IRI.create(NAMESPACE + name);
-    }
-    
-    public static void main(String[] args) {
-        List<IRI> list = new ArrayList<>();
-        list.add(Individual.BODY_AVERAGE);
-        list.add(Individual.BODY_FAT);
-        list.add(Individual.BODY_MUSCULAR);
-        list.add(Individual.BODY_SLIM);
-        list.add(Individual.COLOR_FEW);
-        list.add(Individual.COAT_LENGTH_HAIRLESS);
-        list.add(Individual.COAT_LENGTH_LONG);
-        list.add(Individual.COAT_LENGTH_MEDIUM);
-        list.add(Individual.COAT_LENGTH_SHORT);
-        list.add(Individual.COLOR_MONOTON);
-        list.add(Individual.COLOR_VARIOUS);
-        list.add(Individual.HEAD_SIZE_AVERAGE);
-        list.add(Individual.HEAD_SIZE_BIG);
-        list.add(Individual.HEAD_SIZE_SMALL);
-        list.add(Individual.LIMB_SIZE_AVERAGE);
-        list.add(Individual.LIMB_SIZE_LONG);
-        list.add(Individual.LIMB_SIZE_SHORT);
-        list.add(Individual.TORSO_SIZE_AVERAGE);
-        list.add(Individual.TORSO_SIZE_BIG);
-        list.add(Individual.TORSO_SIZE_SMALL);
-        for (IRI iri : list) {
-            if (!OntologyUtil.getOntology().containsIndividualInSignature(iri)) System.out.println(iri);
-        }
     }
 }

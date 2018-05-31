@@ -44,6 +44,17 @@
     
 
 
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsStrangers -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasAttitudeTowardsStrangers">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsStrangers"/>
+        <rdfs:label xml:lang="ru">Отношение к незнакомым людям</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBody -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBody">
@@ -116,7 +127,7 @@
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBodyDescriptor"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
-        <rdfs:label xml:lang="ru">Здоровье в целом</rdfs:label>
+        <rdfs:label xml:lang="ru">Здоровье</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -207,6 +218,17 @@
     
 
 
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTendencyToVocalize -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasTendencyToVocalize">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasPersonalityDescriptor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TendencyToVocalize"/>
+        <rdfs:label xml:lang="ru">Разговорчивость</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -254,6 +276,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasImagePath -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasImagePath">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#hasBreedDataDescriptor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -276,6 +307,14 @@
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsStrangers -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsStrangers">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
     </owl:Class>
     
@@ -516,6 +555,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TendencyToVocalize -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TendencyToVocalize">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Personality"/>
+    </owl:Class>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -546,7 +593,11 @@
         <hasShedding rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingAverage"/>
         <hasAverageLifeSpan rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</hasAverageLifeSpan>
         <hasAverageWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</hasAverageWeight>
-        <rdfs:label xml:lang="ru">Абессинская</rdfs:label>
+        <hasImagePath>1.jpg</hasImagePath>
+        <hasImagePath>2.jpg</hasImagePath>
+        <hasImagePath>3.jpg</hasImagePath>
+        <rdfs:comment xml:lang="ru">Абиссинская кошка – древняя порода короткошерстных кошек, выделяющихся среди других представителей кошачьего семейства присущими исключительно им королевскими манерами, грацией и особенным окрасом.</rdfs:comment>
+        <rdfs:label xml:lang="ru">Абиссинская</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -596,11 +647,41 @@
     
 
 
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AmericanBobtail -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AmericanBobtail">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <hasAttitudeTowardsAnimals rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasAttitudeTowardsKids rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasAttitudeTowardsStrangers rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasBody rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodyAverage"/>
+        <hasCoatColor rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#ColorVarious"/>
+        <hasCoatLength rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthLong"/>
+        <hasFamilyAffection rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionHigh"/>
+        <hasGeneralHealth rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthGood"/>
+        <hasGroomingDifficulty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingAverage"/>
+        <hasIntelligence rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceHigh"/>
+        <hasOrigin rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionUSA"/>
+        <hasPlayfulness rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessHigh"/>
+        <hasShedding rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingHigh"/>
+        <hasTendencyToVocalize rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeAverage"/>
+        <hasAverageLifeSpan rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</hasAverageLifeSpan>
+        <hasAverageWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</hasAverageWeight>
+        <hasImagePath>1.jpg</hasImagePath>
+        <hasImagePath>2.jpg</hasImagePath>
+        <hasImagePath>3.jpg</hasImagePath>
+        <rdfs:comment xml:lang="ru">Американский бобтейл – это порода короткохвостых котов. Охотничий взгляд, раскачивающаяся походка и заячий хвостик делают их похожими на диких кошек. Бобтейлы – умные и привязанные к человеку домашние животные. Более того, их интеллект оценивают на уровне выше среднего.</rdfs:comment>
+        <rdfs:label xml:lang="ru">Американский бобтейл</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsAnimals"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsStrangers"/>
         <rdfs:label xml:lang="ru">Дружелюбное</rdfs:label>
     </owl:NamedIndividual>
     
@@ -611,6 +692,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeIndifferent">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsAnimals"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsStrangers"/>
         <rdfs:label xml:lang="ru">Нейтральное</rdfs:label>
     </owl:NamedIndividual>
     
@@ -621,7 +703,31 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeUnfriendly">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsAnimals"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsKids"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeTowardsStrangers"/>
         <rdfs:label xml:lang="ru">Недружелюбное</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Birman -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Birman">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <hasAttitudeTowardsAnimals rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasAttitudeTowardsKids rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasBody rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodyAverage"/>
+        <hasCoatLength rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthLong"/>
+        <hasFamilyAffection rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionVeryHigh"/>
+        <hasGeneralHealth rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthBad"/>
+        <hasGroomingDifficulty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingEasy"/>
+        <hasIntelligence rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceHigh"/>
+        <hasPlayfulness rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessHigh"/>
+        <hasShedding rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingAverage"/>
+        <hasTendencyToVocalize rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeOften"/>
+        <hasAverageLifeSpan rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</hasAverageLifeSpan>
+        <hasAverageWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</hasAverageWeight>
+        <rdfs:comment xml:lang="ru">Роскошность и несравнимость. Восточные корни и популярность в Европе. Бирманская кошка насколько очаровательна, что покоряет сердца всех любителей животных!</rdfs:comment>
+        <rdfs:label xml:lang="ru">Бирманская</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -819,7 +925,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthGood">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GeneralHealth"/>
-        <rdfs:label xml:lang="ru">Хорошое здоровье</rdfs:label>
+        <rdfs:label xml:lang="ru">Хорошее здоровье</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -950,6 +1056,39 @@
     
 
 
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionUSA -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionUSA">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Region"/>
+        <rdfs:label xml:lang="ru">США</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RussianBlue -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RussianBlue">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <hasAttitudeTowardsAnimals rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasAttitudeTowardsKids rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeIndifferent"/>
+        <hasAttitudeTowardsStrangers rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeUnfriendly"/>
+        <hasBody rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodyAverage"/>
+        <hasBody rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySlim"/>
+        <hasCoatLength rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthShort"/>
+        <hasFamilyAffection rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionHigh"/>
+        <hasGeneralHealth rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthGood"/>
+        <hasGroomingDifficulty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingHard"/>
+        <hasIntelligence rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceHigh"/>
+        <hasOrigin rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#RegionRussia"/>
+        <hasPlayfulness rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessLow"/>
+        <hasShedding rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingHigh"/>
+        <hasAverageLifeSpan rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</hasAverageLifeSpan>
+        <rdfs:comment xml:lang="ru">Русская голубая кошка – это необыкновенно милое животное, которое явно выделяется среди других своим таинственным серо-голубым окрасом.</rdfs:comment>
+        <rdfs:label xml:lang="ru">Русская голубая</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingAverage -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingAverage">
@@ -995,6 +1134,30 @@
     
 
 
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Sphynx -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Sphynx">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Breed"/>
+        <hasAttitudeTowardsAnimals rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasAttitudeTowardsKids rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasAttitudeTowardsStrangers rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AttitudeFriendly"/>
+        <hasBody rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySizeAverage"/>
+        <hasBody rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#BodySlim"/>
+        <hasCoatLength rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#CoatLengthHairless"/>
+        <hasFamilyAffection rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#AffectionVeryHigh"/>
+        <hasGeneralHealth rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#HealthBad"/>
+        <hasGroomingDifficulty rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#GroomingHard"/>
+        <hasIntelligence rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#IntelligenceHigh"/>
+        <hasPlayfulness rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#PlayfulnessHigh"/>
+        <hasShedding rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#SheddingVeryLow"/>
+        <hasAverageLifeSpan rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</hasAverageLifeSpan>
+        <hasAverageWeight rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</hasAverageWeight>
+        <rdfs:comment xml:lang="ru">Лысые кошки породы сфинкс - это уникальные существа, родом из античности. Человек, которые впервые видит лысую кошку, находится в некотором шоке. Ведь мы привыкли, что кошки - это милые и пушистые комочки, из которых вырастают животные с красивой шерстью.</rdfs:comment>
+        <rdfs:label xml:lang="ru">Сфинкс</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperAggressive -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperAggressive">
@@ -1027,6 +1190,51 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TemperSoft">
         <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#Temper"/>
         <rdfs:label xml:lang="ru">Мягкий характер</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeAverage -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeAverage">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TendencyToVocalize"/>
+        <rdfs:label xml:lang="ru">Средняя разговорчивость</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeNotOften -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeNotOften">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TendencyToVocalize"/>
+        <rdfs:label xml:lang="ru">Не особо разговорчива</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeOften -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeOften">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TendencyToVocalize"/>
+        <rdfs:label xml:lang="ru">Разговорчива</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeRarely -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeRarely">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TendencyToVocalize"/>
+        <rdfs:label xml:lang="ru">Не разговорчива</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeVeryOften -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#VocalizeVeryOften">
+        <rdf:type rdf:resource="http://www.semanticweb.org/admin/ontologies/2018/2/catonto#TendencyToVocalize"/>
+        <rdfs:label xml:lang="ru">Очень разговорчива</rdfs:label>
     </owl:NamedIndividual>
     
 

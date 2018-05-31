@@ -16,23 +16,13 @@
  */
 package com.tika.catontowebservice.web.controllers;
 
-import com.tika.catontowebservice.semantic.service.OntologyProcessor;
 import com.tika.catontowebservice.web.service.OntologyWebService;
-import java.util.stream.Collectors;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.model.OWLPropertyExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -51,7 +41,9 @@ public class MainController {
     private ModelAndView getBreedParams(@PathVariable("breedName") String breedName) {
         return new ModelAndView("breedInfo", "breedBodyProp", OntologyWebService.getBodyBreedCharacteristics(breedName))
                 .addObject("breedPersonalityProp", OntologyWebService.getPersonalityBreedCharacteristics(breedName))
-                .addObject("breedName", OntologyWebService.getBreedName(breedName));
+                .addObject("breedImages", OntologyWebService.getImagePathList(breedName))
+                .addObject("breedOrigin", OntologyWebService.getOrigin(breedName))
+                .addObject("breedName", breedName);
     }
     
     @RequestMapping(value = "/breeds", method = RequestMethod.GET)
@@ -67,13 +59,6 @@ public class MainController {
     
     @RequestMapping(value = "/findBreed", method = RequestMethod.POST)
     private ModelAndView findBreeds() {
-        for(Map.Entry<String, String[]> entry : request.getParameterMap().entrySet()) {
-            System.out.print(entry.getKey() + ": " );
-            for(String str : entry.getValue()) {
-                System.out.println(str);
-            }
-        }
-        System.out.println("FROM CONTROLLER");
         return new ModelAndView("index", "breedsFinded", OntologyWebService.findBreeds(request.getParameterMap()))
                 .addObject("breedPersonProperties", OntologyWebService.getPersonalityBreedCharacteristics())
                 .addObject("breedBodyProperties", OntologyWebService.getBodyBreedCharacteristics());

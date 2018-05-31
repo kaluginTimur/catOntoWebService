@@ -18,35 +18,14 @@ package com.tika.catontowebservice.semantic.service;
 
 import com.tika.catontowebservice.semantic.util.OntologyUtil;
 import com.tika.catontowebservice.semantic.vocabulary.Catonto;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.*;
+import java.util.stream.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAnnotation;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLDataProperty;
-import org.semanticweb.owlapi.model.OWLDataPropertyExpression;
-import org.semanticweb.owlapi.model.OWLEntity;
-import org.semanticweb.owlapi.model.OWLLiteral;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLObjectProperty;
-import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.model.OWLProperty;
-import org.semanticweb.owlapi.model.OWLPropertyExpression;
+import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.search.EntitySearcher;
+import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 /**
  *
@@ -66,42 +45,18 @@ public class OntologyProcessor {
     
     private static final OWLClass BREED_CLASS = getOntoClass(Catonto.BREED);
     
-    public static void main(String[] args) throws OWLOntologyStorageException {
-//        setPropertyValueForIndividual(getOntoIndividual("TestBreedInst"), 
-//                getOntoObjectProperty("hasLimbSize"), 
-//                getOntoIndividual("LimbSizeLong"));
-//        reasoner.getObjectPropertyValues(getOntoIndividual("TestBreedInst"), 
-//                getOntoObjectProperty("hasLimbSize"))
-//                .forEach(System.out::println);
-        getObjectPropertyValuesForBreedIndividual(getOntoIndividual("Abyssinian"), getOntoObjectProperty(Catonto.ObjectProperty.HAS_BODY_DESCRIPTOR))
-                .forEach((t, u) -> {
-                    System.out.println(getRuLabel(t.asOWLObjectProperty()) + "\t" + u);
-                });
-        getSpecifiedClassDomainDataProperties(BREED_CLASS, getOntoDataProperty(Catonto.DataProperty.HAS_BODY_DESCRIPTOR)).forEach(System.out::println);
-    }
-    
-    public static Map<Map<String, String>, String[]> findBreeds(Map<String, String[]> propertyMap) {
-        propertyMap.forEach((t, u) -> {
-            System.out.print(t + ": ");
-            for(String str : u) {
-                System.out.println(str);
-            }
-        });
-        Map<Map<String, String>, String[]> targetMap = new HashMap<>();
+    public static Map<String, String[]> findBreeds(Map<String, String[]> propertyMap) {
+        Map<String, String[]> targetMap = new LinkedHashMap<>();
         getClassInstances(BREED_CLASS).forEach(breed -> {
-            Map<String, String> breedNameMap = new HashMap<>();
-            breedNameMap.put(breed.getIRI().getShortForm(), getRuLabel(breed));
+            String breedName = breed.getIRI().getShortForm();
             ArrayList<String> propertyList = new ArrayList<>();
             propertyMap.entrySet().forEach(propertyEntry -> {
                 if (ontology.containsDataPropertyInSignature(getIri(propertyEntry.getKey()))) {
                     OWLDataProperty property = getOntoDataProperty(propertyEntry.getKey());
-                    System.out.println(property);
                     reasoner.getDataPropertyValues(breed, property).forEach(literal -> {
                         for (String value : propertyEntry.getValue()) {
-                            System.out.println("\t" + literal.getLiteral() + " = " + value + "?" 
-                                    + StringUtils.equals(literal.getLiteral(), value));
                             if (StringUtils.equals(literal.getLiteral(), value)) {
-                                propertyList.add(getRuLabel(property));
+                                propertyList.add(property.getIRI().getShortForm());
                                 break;
                             }
                         }
@@ -109,13 +64,10 @@ public class OntologyProcessor {
                 } else {
                     if (ontology.containsObjectPropertyInSignature(getIri(propertyEntry.getKey()))) {
                         OWLObjectProperty property = getOntoObjectProperty(propertyEntry.getKey());
-                        System.out.println(property);
                         reasoner.getObjectPropertyValues(breed, property).entities().forEach(breedPropValue -> {
                             for (String value : propertyEntry.getValue()) {
-                                System.out.println("\t" + breedPropValue.getIRI().toString() + " = " + value + "?" 
-                                        + StringUtils.equals(value, breedPropValue.getIRI().toString()));
                                 if (StringUtils.equals(value, breedPropValue.getIRI().getShortForm())) {
-                                    propertyList.add(getRuLabel(property));
+                                    propertyList.add(property.getIRI().getShortForm());
                                     break;
                                 }
                             }
@@ -124,9 +76,17 @@ public class OntologyProcessor {
                 }
             });
             if (!propertyList.isEmpty()) {
-                targetMap.put(breedNameMap, propertyList.toArray(new String[propertyList.size()]));
+                targetMap.put(breedName, propertyList.toArray(new String[propertyList.size()]));
             }
         });
+        if(!targetMap.isEmpty()) {
+            List<Map.Entry<String, String[]>> list = new LinkedList<>(targetMap.entrySet());
+            Collections.sort(list, (Map.Entry<String, String[]> o1, Map.Entry<String, String[]> o2) -> {
+                return Integer.valueOf(o2.getValue().length).compareTo(o1.getValue().length);
+            });
+            targetMap.clear();
+            list.forEach(entry -> targetMap.put(entry.getKey(), entry.getValue()));
+        }
         return targetMap;
     }
     
@@ -306,6 +266,60 @@ public class OntologyProcessor {
             if(remainder.isPresent()) returnString = remainder.get();
         }
         return returnString;
+    }
+    
+    public static String getRuComment(OWLEntity entity) {
+        Optional<OWLAnnotation> commentAnnotationOptional = EntitySearcher.getAnnotations(entity, ontology, dataFactory.getRDFSComment())
+                .filter((comment) -> {
+                    Optional<OWLLiteral> commentLiteralOptional = comment.getValue().asLiteral();
+                    if (!commentLiteralOptional.isPresent()) {
+                        return false;
+                    }
+                    return commentLiteralOptional.get().hasLang("ru");
+                }).findFirst();
+        String returnString = "";
+        if(commentAnnotationOptional.isPresent()) {
+            Optional<OWLLiteral> labelLiteralOptional = commentAnnotationOptional.get().getValue().asLiteral();
+            if(labelLiteralOptional.isPresent()) returnString = labelLiteralOptional.get().getLiteral();
+        } 
+        return returnString;
+    }
+    
+    public static ArrayList<String> getImagePathList(OWLNamedIndividual breed) {
+        ArrayList<String> pathList = new ArrayList<>();
+        getDataPropertyValuesForBreedIndividual(breed, getOntoDataProperty(Catonto.DataProperty.HAS_BREED_DESCRIPTOR))
+                .forEach((prop, values) -> {
+                    if(StringUtils.equals(prop.asOWLDataProperty().getIRI().getShortForm(), 
+                            Catonto.DataProperty.HAS_IMAGE_PATH.getShortForm())) {
+                        values.forEach(value -> pathList.add(value.getIRI().toString().replace(Catonto.NAMESPACE, "")));
+                    }
+                });
+        return pathList;
+    }
+    
+    public static String getBreedOrigin(OWLNamedIndividual breed) {
+        ArrayList<String> origin = new ArrayList<>();
+        getObjectPropertyValuesForBreedIndividual(breed, null)
+                .forEach((prop, values) -> {
+                    if(StringUtils.equals(prop.asOWLObjectProperty().getIRI().getShortForm(), 
+                            Catonto.ObjectProperty.HAS_ORIGIN.getShortForm())) {
+                        values.forEach(value -> origin.add(resolveEntityName(value.getIRI())));
+                    }
+                });
+        return origin.isEmpty() ? "" : origin.get(0);
+    }
+    
+    public static String getEntityType(String entityName) {
+        if(ontology.containsIndividualInSignature(getIri(entityName))) {
+            return OWLRDFVocabulary.OWL_INDIVIDUAL.toString();
+        } 
+        if(ontology.containsObjectPropertyInSignature(getIri(entityName))) {
+            return OWLRDFVocabulary.OWL_OBJECT_PROPERTY.toString();
+        }
+        if(ontology.containsDataPropertyInSignature(getIri(entityName))) {
+            return OWLRDFVocabulary.OWL_DATA_PROPERTY.toString();
+        }
+        return entityName;
     }
     
     public static Stream<OWLNamedIndividual> getClassInstances(OWLClass ontoClass) {
